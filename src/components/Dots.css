@@ -1,0 +1,83 @@
+
+/* =================================== REUSABLE CSS ================================ */
+
+.dot-container{
+    height: 90px; width: 90px;
+    display: flex;
+}
+
+.dot{
+    height: 20px; width: 20px;
+    border-radius: 100%;
+    background-color: black;
+}
+
+.row{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+/* ------------------------------------------------------------------------------------------ */
+
+/* Dot One */
+
+.one{
+    justify-content: center;
+}
+
+.one-one{
+    align-self: center;    
+}
+
+
+/* Dot Two */
+
+.two{
+    flex-direction: column;
+    justify-content: space-between;   
+}
+
+.two-two{
+    margin-left: auto;
+}
+
+
+/* Dot Three */
+
+.three{
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.three-two{
+    
+    align-self: center;
+}
+
+.three-three{
+    
+    margin-left: auto;
+}
+
+/* Dot Four */
+
+.four-left{
+    margin-left: auto;
+}
+
+/* Dot Five */
+
+.five{
+    justify-content: space-between;
+}
+
+.five-three{
+    align-self: center;
+}
+
+/* Dot Six */
+
+.six-left{
+    margin-left: auto;
+}
