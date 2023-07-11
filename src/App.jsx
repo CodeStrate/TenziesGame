@@ -10,6 +10,12 @@ function App() {
   const [won, setWon] = useState(false)
   const [count, setCount] = useState(0)
 
+  const [dieStyle, setDieStyle] = useState(true)
+  
+    function changeStyle(){
+        setDieStyle(prevDieStyle => !prevDieStyle)
+    }
+
 
   //TENZIES has 2 winning conditions. all dice are held and all are of the same value/number.
 
@@ -46,7 +52,8 @@ function App() {
     }
     
     const diceElements = dice.map((die) => <Die key={die.id} value={die.value} changeIsHeld={() => changeIsHeld(die.id)}
-    isHeld={die.isHeld}/>)
+    isHeld={die.isHeld}
+    dieStyle={dieStyle}/>)
 
     function changeIsHeld(id) {
       setDice(prevDice => {
@@ -82,6 +89,10 @@ function App() {
         y: 0}}
         />}
         <div className="game-board">
+
+          <button className='style-btn'
+          onClick={changeStyle}>{dieStyle ? "1" : "•"}</button>
+
           <h1 className="game--title">Tenzies</h1>
           <p className="game--description">Roll until all dice are the same. Click each die to freeze it at its current value between rolls.</p>
           <div className="dice-container">
