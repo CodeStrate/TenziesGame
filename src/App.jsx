@@ -54,8 +54,11 @@ function App() {
   //Effect to store Score and Time in localStorage
 
   useEffect(() => {
-      localStorage.setItem('Score', JSON.stringify(score))
-      localStorage.setItem('Time', JSON.stringify(timer))
+    let ScoreData = {
+      "Rolls-Score" : score,
+      "Time-Taken" : timer
+    }
+      localStorage.setItem('ScoreData', JSON.stringify(ScoreData))
   }, [hasWon])
 
 
@@ -108,16 +111,11 @@ function App() {
 
     
   return (
-    <main>
+    <main className='game-board'>
       {hasWon && <Confetti
-      width={1920}
-      height={1080} 
-      numberOfPieces={200}
-      confettiSource={{
-        x: 2200 / 2,
-        y: 0}}
+      width={1480}
+      height={730}
         />}
-        <div className="game-board">
         <div className="game--ui-wrapper">
           <button className='style-btn'
           onClick={changeDieStyle}>{dieStyle ? "1" : "•"}</button>
@@ -135,7 +133,6 @@ function App() {
           className='roll-btn'>
             {hasWon ? "New Game" : "Roll"}
             </button>
-        </div>
     </main>
   )
 }
