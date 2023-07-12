@@ -26,8 +26,8 @@ main{
   padding: 40px;
   border-radius: 10px;
   display: flex;
-  justify-content: space-between;
   align-items: center;
+  justify-content: space-between;
   flex-direction: column;
 }
 
@@ -43,10 +43,52 @@ main{
   margin: 0;
 }
 
-.roll--count{
-  font-size: 1.9rem;
-  font-weight: 500;
+.game--ui-wrapper{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 800px;
 }
+
+.game--timer{
+  font-weight: 600;
+  background-color: #7EBDC2;
+  padding: 8px;
+  color: #F5F5F5;
+  border-radius: 10px;
+  font-size: 1.5rem;
+}
+
+.game--score{
+  font-size: 2rem;
+  font-weight: 600;
+  background-color: #7EBDC2;
+  padding: 8px;
+  color: #F5F5F5;
+  border-radius: 10px;
+}
+
+.style-btn{
+  width: 55px;
+  height: 55px;
+  border-radius: 10px;
+  border: none;
+  font-size: 2rem;
+  background-color: #7EBDC2;
+  color: transparent;
+  -webkit-text-stroke: 1px #F5F5F5;
+}
+
+.style-btn:hover{
+  filter: brightness(90%);
+}
+
+.style-btn:active{
+  transform: scale(.8);
+}
+
+
+/* ---- Dice CSS ---- */
 
 .dice-container{
   display: grid;
@@ -70,12 +112,14 @@ main{
   -webkit-text-stroke: 3px #21222A;
 }
 
+
 .roll-btn{
   width: 300px;
   padding-block: 10px;
   border-radius: 10px;
   border: none;
-  background-color: #17A398;
+  font-weight: 600;
+  background-color: #7EBDC2;
   font-size: 3rem;
   color: #FBFCFF;
   cursor: pointer;
@@ -87,25 +131,4 @@ main{
 
 .roll-btn:active{
   box-shadow: inset 5px 5px 10px rgba(0, 0, 0, 0.3);
-}
-
-
-.style-btn{
-  width: 45px;
-  height: 45px;
-  border-radius: 50%;
-  margin-right: auto;
-  border: none;
-  font-size: 1.7rem;
-  background-color: #7EBDC2;
-  color: transparent;
-  -webkit-text-stroke: 1px #F5F5F5;
-}
-
-.style-btn:hover{
-  filter: brightness(90%);
-}
-
-.style-btn:active{
-  transform: scale(.8);
 }

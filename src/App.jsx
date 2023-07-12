@@ -6,13 +6,17 @@ import Confetti from 'react-confetti'
 
 function App() {
 
-  const [dice, setDice] = useState(allNewDice())
-  const [won, setWon] = useState(false)
-  const [count, setCount] = useState(0)
+  //States
 
+  const [dice, setDice] = useState(allNewDice())
+  const [hasWon, setHasWon] = useState(false)
+  const [score, setScore] = useState(0)
   const [dieStyle, setDieStyle] = useState(true)
+  const [timer, setTimer] = useState(0)
   
-    function changeStyle(){
+
+
+    function changeDieStyle(){
         setDieStyle(prevDieStyle => !prevDieStyle)
     }
 
@@ -20,16 +24,40 @@ function App() {
   //TENZIES has 2 winning conditions. all dice are held and all are of the same value/number.
 
 
-  //effect to sync states
+  //effect to sync dice and win states
   useEffect(() => {
     const allHeld = dice.every(die => die.isHeld)
     const refValue = dice[0].value
     const allSameValue = dice.every(die => die.value === refValue)
 
     if(allHeld && allSameValue) {
-      setWon(true)
+      setHasWon(true)
     }
   }, [dice])
+
+  //Timer Effect
+
+  useEffect(() => {
+    let interval = null
+    if(!hasWon) {
+      interval = setInterval(() => {
+          setTimer(timer => timer + 1)
+      }, 1000);    // here 1000 = 1s
+    } else {
+        clearInterval(interval)
+    }
+
+    return () => clearInterval(interval)
+  }, [hasWon])
+
+
+  //Effect to store Score and Time in localStorage
+
+  useEffect(() => {
+      localStorage.setItem('Score', JSON.stringify(score))
+      localStorage.setItem('Time', JSON.stringify(timer))
+  }, [hasWon])
+
 
   //helper
   function generateNewDie(){
@@ -64,23 +92,24 @@ function App() {
     }
 
     function rollDice(){
-      if(!won) {
+      if(!hasWon) {
         setDice(prevDie => prevDie.map(die => {
           return die.isHeld ? die :
               generateNewDie()
         }))
-        setCount(prevCount => prevCount + 1)
+        setScore(prevScore => prevScore + 1)
       }else {
-        setWon(false)
+        setHasWon(false)
         setDice(allNewDice())
-        setCount(0)
+        setScore(0)
+        setTimer(0)
       }
     }
 
     
   return (
     <main>
-      {won && <Confetti
+      {hasWon && <Confetti
       width={1920}
       height={1080} 
       numberOfPieces={200}
@@ -89,20 +118,22 @@ function App() {
         y: 0}}
         />}
         <div className="game-board">
-
+        <div className="game--ui-wrapper">
           <button className='style-btn'
-          onClick={changeStyle}>{dieStyle ? "1" : "•"}</button>
+          onClick={changeDieStyle}>{dieStyle ? "1" : "•"}</button>
+          <h4 className="game--score">Score: {score}</h4>
+          <span className="game--timer">{timer}s</span>
+        </div>
 
           <h1 className="game--title">Tenzies</h1>
           <p className="game--description">Roll until all dice are the same. Click each die to freeze it at its current value between rolls.</p>
           <div className="dice-container">
           {diceElements}
           </div>
-          <h4 className="roll--count">Number of rolls: {count}</h4>
           <button 
           onClick={rollDice}
           className='roll-btn'>
-            {won ? "New Game" : "Roll"}
+            {hasWon ? "New Game" : "Roll"}
             </button>
         </div>
     </main>
