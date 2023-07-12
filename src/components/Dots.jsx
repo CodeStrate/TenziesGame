@@ -6,15 +6,15 @@ import Six from './dotComponents/Six'
 import Three from './dotComponents/Three'
 import Two from './dotComponents/Two'
 
-export default function Dots(props){
+export default function Dots({value}){
     return (
         <div>
-            {props.value === 1 && <One />}
-            {props.value === 2 && <Two />}
-            {props.value === 3 && <Three />}
-            {props.value === 4 && <Four />}
-            {props.value === 5 && <Five />}
-            {props.value === 6 && <Six />}
+            {value === 1 && <One />}
+            {value === 2 && <Two />}
+            {value === 3 && <Three />}
+            {value === 4 && <Four />}
+            {value === 5 && <Five />}
+            {value === 6 && <Six />}
             
         </div>
     )

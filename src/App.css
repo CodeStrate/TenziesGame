@@ -1,5 +1,27 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap');
 
+:root{
+  --body-color: #21222A;
+  --main-game-color: #F5F5F5;
+  --desc-color: #9F9F9F;
+  --game-ui-color: #7EBDC2;
+  --die-color: #FFF8F8;
+  --dice-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
+}
+
+.switch{
+  --body-color: #f1f1f1;
+  --main-game-color: #21222A;
+  --desc-color: #e2e2e2;
+  --game-ui-color: #649699;
+  --die-color: #1f1f1f;
+  --dice-shadow: 0 4px 4px rgba(255, 255, 255, 0.25);
+  
+  transition: all 0.3s ease-in-out;
+  
+}
+
+
 *{
   font-family: 'Poppins', sans-serif;
   box-sizing: border-box;
@@ -7,8 +29,8 @@
   margin: 0;
 }
 
-body{
-  background-color: #21222A;
+.container{
+  background-color: var(--body-color);
   width: 100vw;
   height: 100vh;
   display: flex;
@@ -20,7 +42,7 @@ body{
 .game-board{
   width: 500px;
   height: 500px;
-  background-color: #F5F5F5;
+  background-color: var(--main-game-color);
   padding: 20px;
   border-radius: 10px;
   display: flex;
@@ -30,6 +52,7 @@ body{
 }
 
 .game--title{
+  color: var(--body-color);
   font-size: 2rem;
   margin: 0;
 }
@@ -39,7 +62,7 @@ body{
   max-width: 250px;
   text-align: center;
   margin: 0;
-  color: #CACACA;
+  color: var(--desc-color);
 }
 
 .game--ui-wrapper{
@@ -51,9 +74,9 @@ body{
 
 .game--timer{
   font-weight: 600;
-  background-color: #7EBDC2;
+  background-color: var(--game-ui-color);
   padding: 8px;
-  color: #F5F5F5;
+  color: var(--main-game-color);
   border-radius: 10px;
   font-size: .8rem;
 }
@@ -61,28 +84,28 @@ body{
 .game--score{
   font-size: 1rem;
   font-weight: 600;
-  background-color: #7EBDC2;
+  background-color: var(--game-ui-color);
   padding: 8px;
-  color: #F5F5F5;
+  color: var(--main-game-color);
   border-radius: 10px;
 }
 
-.style-btn{
+.btn{
   width: 32px;
   height: 32px;
   border-radius: 10px;
   border: none;
   font-size: 1rem;
-  background-color: #7EBDC2;
+  background-color: var(--game-ui-color);
   color: transparent;
-  -webkit-text-stroke: .7px #F5F5F5;
+  -webkit-text-stroke: .7px var(--main-game-color);
 }
 
-.style-btn:hover{
+.btn:hover{
   filter: brightness(90%);
 }
 
-.style-btn:active{
+.btn:active{
   transform: scale(.8);
 }
 
@@ -98,7 +121,7 @@ body{
 .die{
   width: 65px; height: 65px;
   border-radius: 10px;
-  box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
+  box-shadow: var(--dice-shadow);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -108,7 +131,18 @@ body{
 .die--value{
   font-size: 1.8rem;
   color: transparent;
-  -webkit-text-stroke: 1.4px #21222A;
+  -webkit-text-stroke: 1.4px var(--body-color);
+}
+
+
+.bottom{
+  width: 300px;
+  align-self: flex-end;
+  justify-content: center;
+}
+
+.theme{
+  margin-left: auto;
 }
 
 
@@ -118,9 +152,9 @@ body{
   border-radius: 10px;
   border: none;
   font-weight: 600;
-  background-color: #7EBDC2;
+  background-color: var(--game-ui-color);
   font-size: 1.5rem;
-  color: #FBFCFF;
+  color: var(--main-game-color);
   cursor: pointer;
 }
 
@@ -129,5 +163,5 @@ body{
 }
 
 .roll-btn:active{
-  box-shadow: inset 5px 5px 10px rgba(0, 0, 0, 0.3);
+  transform: scale(0.9);
 }

@@ -13,13 +13,8 @@ function App() {
   const [score, setScore] = useState(0)
   const [dieStyle, setDieStyle] = useState(true)
   const [timer, setTimer] = useState(0)
+  const [theme, setTheme] = useState(false)
   
-
-
-    function changeDieStyle(){
-        setDieStyle(prevDieStyle => !prevDieStyle)
-    }
-
 
   //TENZIES has 2 winning conditions. all dice are held and all are of the same value/number.
 
@@ -82,9 +77,19 @@ function App() {
       return dieValueArray
     }
     
-    const diceElements = dice.map((die) => <Die key={die.id} value={die.value} changeIsHeld={() => changeIsHeld(die.id)}
+    const diceElements = dice.map((die) => 
+    <Die 
+    key={die.id}
+
+    value={die.value}
+
+    changeIsHeld={() => changeIsHeld(die.id)}
+
     isHeld={die.isHeld}
-    dieStyle={dieStyle}/>)
+
+    dieStyle={dieStyle}
+    
+    lightMode={theme}/>)
 
     function changeIsHeld(id) {
       setDice(prevDice => {
@@ -111,14 +116,16 @@ function App() {
 
     
   return (
-    <main className='game-board'>
+    <div className={`container ${theme ? "switch" : ""}`}>
+      <main className="game-board">
       {hasWon && <Confetti
       width={1480}
       height={730}
         />}
         <div className="game--ui-wrapper">
-          <button className='style-btn'
-          onClick={changeDieStyle}>{dieStyle ? "1" : "•"}</button>
+          <button className='btn style'
+          onClick={() => setDieStyle(prevDieStyle => !prevDieStyle)}
+          >{dieStyle ? "1" : "•"}</button>
           <h4 className="game--score">Score: {score}</h4>
           <span className="game--timer">{timer}s</span>
         </div>
@@ -128,12 +135,20 @@ function App() {
           <div className="dice-container">
           {diceElements}
           </div>
+          <div className="game--ui-wrapper bottom">
           <button 
           onClick={rollDice}
           className='roll-btn'>
             {hasWon ? "New Game" : "Roll"}
             </button>
+            <button
+            className='btn theme'
+            onClick={() => setTheme(prevTheme => !prevTheme)}
+            >{theme ? "L" : "D"}</button>
+          </div>
     </main>
+    </div>
+    
   )
 }
 

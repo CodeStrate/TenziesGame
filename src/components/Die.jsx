@@ -1,16 +1,18 @@
 import { useState } from "react"
 import Dots from "./Dots"
 
-export default function Die({changeIsHeld, value, isHeld, dieStyle}){
+export default function Die({changeIsHeld, value, isHeld, dieStyle, lightMode}){
     
+    const holdColor = lightMode ? "#45B69C" : "#21D19F"
+
     const styles = {
-        backgroundColor: isHeld ? "#21D19F" : "white"
+        backgroundColor: isHeld ? holdColor : "var(--die-color)"
     }
 
 
     return (
         <div
-        className="die"
+        className={`die ${lightMode ? "switch" : ""}`}
         style={styles}
         onClick={changeIsHeld}
         >
