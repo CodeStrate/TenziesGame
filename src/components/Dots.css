@@ -90,3 +90,34 @@
 .six-left{
     margin-left: auto;
 }
+
+
+@media (max-width: 768px){
+    .dot-container{
+        width: 40px; height: 40px;
+    }
+
+    .dot{
+        width: 8px; height: 8px;
+    }
+}
+
+@media (max-width: 425px){
+    .dot-container{
+        width: 30px; height: 30px;
+    }
+
+    .dot{
+        width: 6px; height: 6px;
+    }
+}
+
+@media (max-width: 321px){
+    .dot-container{
+        width: 20px; height: 20px;
+    }
+
+    .dot{
+        width: 4px; height: 4px;
+    }
+}

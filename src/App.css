@@ -35,7 +35,8 @@
   height: 100vh;
   display: flex;
   align-items: center;
-  justify-content: center;
+  justify-content: space-evenly;
+  flex-direction: column;
 }
 
 
@@ -136,7 +137,7 @@
 
 
 .bottom{
-  width: 300px;
+  width: 305px;
   align-self: flex-end;
   justify-content: center;
 }
@@ -164,4 +165,190 @@
 
 .roll-btn:active{
   transform: scale(0.9);
+}
+
+/* ====================== Media Queries ======================================== */
+
+@media (max-width: 768px) {
+  .game-board{
+    padding: 10px;
+    width: 450px; height: 450px;
+    justify-content: space-around;
+  }
+
+  .die{
+    width: 55px; height: 55px;
+  }
+
+
+  .game--ui-wrapper{
+    width: 400px;
+  }
+
+  .bottom{
+    width: 270px;
+  }
+
+  .game--score{
+  font-size: .8rem;
+  padding: 6px;
+  border-radius: 5px;
+  }
+
+  .game--title{
+    font-size: 1.5rem;
+  }
+
+  .game--description{
+    font-size: .7rem;
+    max-width: 190px;
+  }
+
+  .game--timer{
+    padding: 7px;
+    font-size: .7rem;
+    border-radius: 5px;
+  }
+
+  .btn{
+    width: 24px; height: 24px;
+    border-radius: 5px;
+    font-size: .7rem;
+  }
+
+  .roll-btn{
+    width: 110px;
+    font-size: 1.1rem;
+    padding-block: 8px;
+    border-radius: 8px;
+  }
+
+  .die--value{
+    font-size: 1.4rem;
+  }
+}
+
+@media (max-width: 426px) {
+  .game-board{
+    width: 360px; height: 360px;
+  }
+
+  .die{
+    width: 45px; height: 45px;
+  }
+
+
+  .game--ui-wrapper{
+    justify-content: space-between;
+    width: 320px;
+  }
+
+  .bottom{
+    width: 230px;
+  }
+
+  .game--score{
+  font-size: .6rem;
+  padding: 5px;
+  border-radius: 5px;
+  }
+
+  .game--title{
+    font-size: 1.3rem;
+  }
+
+  .game--description{
+    font-size: .6rem;
+    max-width: 190px;
+  }
+
+  .game--timer{
+    padding: 5px;
+    font-size: .5rem;
+    border-radius: 5px;
+  }
+
+  .btn{
+    width: 18px; height: 18px;
+    border-radius: 5px;
+    font-size: .5rem;
+  }
+
+  .roll-btn{
+    width: 110px;
+    font-size: 1.1rem;
+    padding-block: 8px;
+    border-radius: 8px;
+  }
+
+  .die--value{
+    font-size: 1.4rem;
+  }
+
+}
+
+
+@media (max-width: 321px) {
+  .game-board{
+    padding: 5px;
+    width: 260px; height: 260px;
+  }
+
+  .dice-container{
+    gap: 15px;
+  }
+
+  .die{
+    width: 30px; height: 30px;
+    border-radius: 3px;
+  }
+
+
+  .game--ui-wrapper{
+    width: 230px;
+  }
+
+  .bottom{
+    width: 165px;
+  }
+
+  .game--score{
+  font-size: .4rem;
+  padding: 4px;
+  border-radius: 3px;
+  }
+
+  .game--title{
+    font-size: 1rem;
+  }
+
+  .game--description{
+    font-size: .5rem;
+    max-width: 150px;
+  }
+
+  .game--timer{
+    padding: 4px;
+    font-size: .4rem;
+    border-radius: 4px;
+  }
+
+  .btn{
+    width: 16px; height: 16px;
+    border-radius: 5px;
+    font-size: .5rem;
+  }
+
+  .roll-btn{
+    width: 80px;
+    font-size: .8rem;
+    padding-block: 6px;
+    border-radius: 6px;
+  }
+
+  .die--value{
+    font-size: 1.1rem;
+    -webkit-text-stroke-width: .8px;
+  }
+
 }
