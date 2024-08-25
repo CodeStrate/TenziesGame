@@ -46,7 +46,7 @@ This will start the development server and the game will be available at http://
 
 # • To-do
 
-1) Add scoring data in the back. (on Hold)
+1) ~~Add scoring data in the back.~~ (Kind of added best score and time per session in local storage (clearable))
 2) ~~Add a timer.~~
 3) Maybe more modes??
 
