@@ -17,7 +17,7 @@
   --die-color: #1f1f1f;
   --dice-shadow: 0 4px 4px rgba(255, 255, 255, 0.25);
   
-  transition: all 0.3s ease-in-out;
+  transition: all 0.3s ease;
   
 }
 
@@ -29,6 +29,7 @@
   margin: 0;
 }
 
+
 .container{
   background-color: var(--body-color);
   width: 100vw;
@@ -37,14 +38,15 @@
   align-items: center;
   justify-content: space-evenly;
   flex-direction: column;
+  transition: all 0.3s ease;
 }
 
 
 .game-board{
-  width: 500px;
-  height: 500px;
+  width: 550px;
+  height: 550px;
   background-color: var(--main-game-color);
-  padding: 20px;
+  padding: 15px;
   border-radius: 10px;
   display: flex;
   align-items: center;
@@ -56,6 +58,7 @@
   color: var(--body-color);
   font-size: 2rem;
   margin: 0;
+  cursor: pointer;
 }
 
 .game--description{
@@ -66,11 +69,16 @@
   color: var(--desc-color);
 }
 
+.toastDesc{
+  text-align: left;
+}
+
 .game--ui-wrapper{
+  margin: 1rem;
   display: flex;
   align-items: center;
   justify-content: space-between;
-  width: 450px;
+  width: 500px;
 }
 
 .game--timer{
@@ -89,6 +97,12 @@
   padding: 8px;
   color: var(--main-game-color);
   border-radius: 10px;
+}
+
+.best{
+  color: var(--body-color);
+  background: none;
+  padding: 0;
 }
 
 .btn{
@@ -136,16 +150,6 @@
 }
 
 
-.bottom{
-  width: 305px;
-  align-self: flex-end;
-  justify-content: center;
-}
-
-.theme{
-  margin-left: auto;
-}
-
 
 .roll-btn{
   width: 150px;
@@ -183,10 +187,6 @@
 
   .game--ui-wrapper{
     width: 400px;
-  }
-
-  .bottom{
-    width: 270px;
   }
 
   .game--score{
@@ -241,10 +241,6 @@
   .game--ui-wrapper{
     justify-content: space-between;
     width: 320px;
-  }
-
-  .bottom{
-    width: 230px;
   }
 
   .game--score{
@@ -306,10 +302,6 @@
 
   .game--ui-wrapper{
     width: 230px;
-  }
-
-  .bottom{
-    width: 165px;
   }
 
   .game--score{

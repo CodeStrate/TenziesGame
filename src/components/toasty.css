@@ -1,0 +1,39 @@
+:root{
+    --body-color: #21222A;
+    --main-game-color: #F5F5F5;
+    --desc-color: #9F9F9F;
+    --game-ui-color: #7EBDC2;
+}
+
+.toastTitle{
+    color: var(--body-color);
+    font-size: 1.4rem;
+    margin: 0;
+}
+
+.toastDesc{
+    font-size: .8rem;
+    max-width: 250px;
+    text-align: left;
+    margin: 0;
+    color: var(--desc-color);
+}
+
+.btn-toastContainer{
+    margin-top: .3rem;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.btn-demo{
+    width: 1.2rem;
+    height: 1.2rem;
+    border-radius: 6px;
+    font-size: .8rem;
+    background-color: var(--game-ui-color);
+    color: transparent;
+    text-align: center;
+    margin-right: .5rem;
+    -webkit-text-stroke: .7px var(--main-game-color);
+}

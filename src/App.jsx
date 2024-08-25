@@ -50,7 +50,7 @@ function App() {
 
 
   return (
-    <div className={`container ${theme ? "switch" : ""}`}>
+    <main className={`container ${theme ? "switch" : ""}`}>
       {hasWon && <ConfettiController />}
       <Game
       theme={theme}
@@ -64,7 +64,7 @@ function App() {
       time={timer}
 
       resetTime={() => resetTime()}/>
-    </div>
+    </main>
     
   )
 }

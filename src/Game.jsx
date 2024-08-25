@@ -1,6 +1,9 @@
 import { useEffect, useState } from 'react'
 import Die from './components/Die'
+import { toast, ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 import { nanoid } from 'nanoid'
+import InstructionToast from './components/InstructionsToast';
 
 
 export default function Game({theme, changeTheme, hasWon, setHasWon, time, resetTime}){
@@ -9,8 +12,13 @@ export default function Game({theme, changeTheme, hasWon, setHasWon, time, reset
 
   const [dice, setDice] = useState(allNewDice())
   const [score, setScore] = useState(0)
+  const [bestScore, setBestScore] = useState(() => JSON.parse(localStorage.getItem('bestScore')) || null)
+  const [bestTime, setBestTime] = useState(() => JSON.parse(localStorage.getItem('bestTime')) || {minutes: null, seconds: null})
   const [dieStyle, setDieStyle] = useState(true)
   
+
+  //the toasty
+  const notify = () => toast(<InstructionToast />)
 
   //TENZIES has 2 winning conditions. all dice are held and all are of the same value/number.
 
@@ -22,6 +30,15 @@ export default function Game({theme, changeTheme, hasWon, setHasWon, time, reset
     const allSameValue = dice.every(die => die.value === refValue)
 
     if(allHeld && allSameValue) {
+      if(bestScore == null || score < bestScore){
+        setBestScore(score)
+        localStorage.setItem('bestScore', JSON.stringify(score))
+      }
+
+      if((bestTime.minutes == null && bestTime.seconds == null) || time.minutes < bestTime.minutes || (time.minutes == bestTime.minutes && time.seconds < bestTime.seconds)){
+        setBestTime(time)
+        localStorage.setItem('bestTime', JSON.stringify(time))
+      }
       setHasWon()
     }
   }, [dice])
@@ -61,6 +78,12 @@ export default function Game({theme, changeTheme, hasWon, setHasWon, time, reset
     
     lightMode={theme}/>)
 
+    const clearLocalStorage = () => {
+      localStorage.clear();
+      setBestScore(null);
+      setBestTime({minutes: null, seconds: null});
+    }
+
     function changeIsHeld(id) {
       setDice(prevDice => {
         return prevDice.map((dice) => {
@@ -88,6 +111,8 @@ export default function Game({theme, changeTheme, hasWon, setHasWon, time, reset
 
     return (
         <main className="game-board">
+          <ToastContainer 
+          theme={theme ? "dark" : "light"}/>
         <div className="game--ui-wrapper">
           <button className='btn style'
           onClick={() => setDieStyle(prevDieStyle => !prevDieStyle)}
@@ -96,12 +121,16 @@ export default function Game({theme, changeTheme, hasWon, setHasWon, time, reset
           <span className="game--timer">{time.minutes > 0 && `${time.minutes}m `}{time.seconds}s</span>
         </div>
 
-          <h1 className="game--title">Tenzies</h1>
+          <h1 className="game--title" onClick={notify}>Tenzies</h1>
           <p className="game--description">Roll until all dice are the same. Click each die to freeze it at its current value between rolls.</p>
+          <strong className='game--timer best'>Best Time: {bestTime.minutes}m and {bestTime.seconds}s</strong>
+          <strong className='game--score best'>Best Score: {bestScore}</strong>
           <div className="dice-container">
           {diceElements}
           </div>
-          <div className="game--ui-wrapper bottom">
+          <div className="game--ui-wrapper">
+            <button className='btn style'
+            onClick={clearLocalStorage}>c</button>
           <button 
           onClick={rollDice}
           className='roll-btn'>
